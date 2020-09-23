@@ -1,7 +1,8 @@
 {
   "name": "siddhi-io-tcp-node",
   "version": "1.0.0",
-  "description": "Basic Example.",
+  "description": "Siddhi io-tcp node client",
+  "main": "lib/index.js",
   "scripts": {
     "prepare": "npm run build",
     "start": "node lib/index.js",
@@ -15,17 +16,25 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/jaywcjlove/tsbb/tree/master/example/basic"
+    "url": "https://github.com/ygmpkk/siddhi-io-tcp-node"
   },
   "jest": {},
-  "keywords": [],
+  "keywords": [
+    "siddhi",
+    "siddhi-io-tcp",
+    "io-tcp"
+  ],
   "license": "MIT",
   "devDependencies": {
     "@types/jest": "^26.0.14",
     "@types/uuid": "^8.3.0",
     "tsbb": "1.7.6"
   },
-  "author": "",
+  "bugs": {
+    "url": "https://github.com/ygmpkk/siddhi-io-tcp-node/issues"
+  },
+  "homepage": "https://github.com/ygmpkk/siddhi-io-tcp-node",
+  "author": "Timothy<ygmpkk@gmail.com>",
   "dependencies": {
     "ByteBuffer": "^0.3.0",
     "node-uuid": "^1.4.8",
