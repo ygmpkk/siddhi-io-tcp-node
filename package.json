@@ -1,6 +1,6 @@
 {
   "name": "siddhi-io-tcp-node",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "description": "Siddhi io-tcp node client",
   "main": "lib/index.js",
   "scripts": {
@@ -8,9 +8,7 @@
     "start": "node lib/index.js",
     "watch": "npm run watch:ts",
     "watch:ts": "tsbb watch & npm run build:types -- --watch",
-    "build": "npm run build:ts && npm run build:types",
-    "build:ts": "tsbb build",
-    "build:types": "tsbb types",
+    "build": "tsc",
     "test": "tsbb test",
     "coverage": "tsbb test --coverage"
   },
@@ -35,6 +33,14 @@
   },
   "homepage": "https://github.com/ygmpkk/siddhi-io-tcp-node",
   "author": "Timothy<ygmpkk@gmail.com>",
+  "publishConfig": {
+    "registry": "https://registry.npmjs.org/"
+  },
+  "files": [
+    "package.json",
+    "lib/",
+    "README.md"
+  ],
   "dependencies": {
     "ByteBuffer": "^0.3.0",
     "node-uuid": "^1.4.8",
