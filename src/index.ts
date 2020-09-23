@@ -69,14 +69,14 @@ export class TCPNettyClient {
     this._client.destroy();
   }
 
-  send(channelId: string, message: any) {
+  send(channelId: string, message: any):boolean {
     const eventComposite: EventComposite = new EventComposite(
       this.sessionId,
       channelId,
       message
     );
 
-    this._client.write(eventComposite.build());
+    return this._client.write(eventComposite.build());
   }
 }
 
