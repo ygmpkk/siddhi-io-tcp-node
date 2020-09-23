@@ -1,6 +1,6 @@
 {
   "name": "siddhi-io-tcp-node",
-  "version": "0.0.4",
+  "version": "0.0.5",
   "description": "Siddhi io-tcp node client",
   "main": "lib/index.js",
   "scripts": {
