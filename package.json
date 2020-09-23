@@ -1,5 +1,5 @@
 {
-  "name": "basic",
+  "name": "siddhi-io-tcp-node",
   "version": "1.0.0",
   "description": "Basic Example.",
   "scripts": {
