@@ -49,15 +49,43 @@ export interface TCPNettyClientOptions {
 export class TCPNettyClient {
   private sessionId: string;
   private _client: Socket;
+  private host: string;
+  private port: number;
+  private timeout = 1000;
+  private retrying = false;
 
   constructor(options: TCPNettyClientOptions) {
     this._client = new Socket();
+    this._client.on("connect", this.connectEventHandler);
+    this._client.on("close", this.closeEventHandler);
+
     this._client.setKeepAlive(options.keepAlive);
     this._client.setNoDelay(options.noDelay);
     this.sessionId = uuidv4();
   }
 
+  private makeConnection() {
+    this._client.connect(this.port, this.host);
+  }
+
+  private connectEventHandler() {
+    console.log("connected");
+    this.retrying = false;
+  }
+
+  private closeEventHandler() {
+    if (!this.retrying) {
+      this.retrying = true;
+      console.log("Reconnecting...");
+    }
+
+    setTimeout(this.makeConnection, this.timeout);
+  }
+
   connect(host: string, port: number): Promise<boolean> {
+    this.host = host;
+    this.port = port;
+
     return new Promise((resolve) => {
       this._client.connect(port, host, () => {
         resolve(true);
@@ -66,10 +94,11 @@ export class TCPNettyClient {
   }
 
   shutdown() {
+    this._client.removeListener("close", this.closeEventHandler);
     this._client.destroy();
   }
 
-  send(channelId: string, message: any):boolean {
+  send(channelId: string, message: any): boolean {
     const eventComposite: EventComposite = new EventComposite(
       this.sessionId,
       channelId,

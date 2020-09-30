@@ -143,7 +143,7 @@ describe("TCPNettyClient", () => {
   //     noDelay: true,
   //   });
 
-  //   await client.connect("localhost", 9892);
+  //   await client.connect("172.18.0.154", 9892);
 
   //   const channelId = "topic";
   //   const message = {
