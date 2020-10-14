@@ -39,7 +39,8 @@
   "files": [
     "package.json",
     "lib/",
-    "README.md"
+    "README.md",
+    "LICENSE"
   ],
   "dependencies": {
     "ByteBuffer": "^0.3.0",
